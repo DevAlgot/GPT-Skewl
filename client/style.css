@@ -13,7 +13,7 @@ body {
   align-items: center;
 }
 
-#app {
+#app { /*Chat inputen saken*/
   width: 100vw; /*100 vw*/
   height: 100vh; /*100vh*/
   background: #343541;
@@ -21,7 +21,7 @@ body {
   display: flex;
   flex-direction: column;
   box-shadow: 2px 2px 2pc rgba(0, 0, 0, 0.4);
-  background-color: dodgerblue;
+  background-color: rgb(26, 82, 138);
 }
 
 .body {
