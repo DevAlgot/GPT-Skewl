@@ -17,7 +17,7 @@ body {
   width: 100vw; /*100 vw*/
   height: 100vh; /*100vh*/
   background: #343541;
-
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   box-shadow: 2px 2px 2pc rgba(0, 0, 0, 0.4);
