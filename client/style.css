@@ -14,8 +14,8 @@ body {
 }
 
 #app {
-  width: 100vw;
-  height: 100vh;
+  width: 100%; /*100 vw*/
+  height: 80%; /*100vh*/
   background: #343541;
 
   display: flex;
@@ -60,6 +60,12 @@ body {
 
 .ai {
   background: #40414F;
+  padding: 10px;
+  color: white;
+  width: fit-content;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  
 }
 
 .chat {
