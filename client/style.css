@@ -69,9 +69,13 @@ body {
 }
 
 .false {
-  margin-left: auto;
-  background-color: rgb(73, 73, 73);
-  color: black;
+  background: #40414F;
+  padding: 10px;
+  color: white;
+  width: fit-content;
+  border-radius: 10px;
+  margin-bottom: 15px;
+
 }
 
 .footer form{
