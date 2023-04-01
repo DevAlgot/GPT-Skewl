@@ -70,6 +70,7 @@ body {
 }
 
 .false {
+  margin-left: auto;
   background: #40414F;
   padding: 10px;
   color: white;
