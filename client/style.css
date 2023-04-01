@@ -243,12 +243,14 @@ body {
   background-color: #343541;
   width: fit-content;
   border-radius: 15px;
+  align-items: center;
 }
 
 .ai {
   background: #40414F;
   width: fit-content;
   border-radius: 15px;
+  align-items: center;
 }
 
 .chat {
