@@ -74,11 +74,11 @@ const history = [];
 
     const messages = [];
     for (const [input_text, completion_text] of history) {
-      messages.push({ role: "user", content: input_text });
-      messages.push({ role: "assistant", content: completion_text });
+      messages.push({ role: "user", content: `${input_text}` });
+      messages.push({ role: "assistant", content: `${completion_text}` });
     }
 
-    messages.push({ role: "user", content: user_input });
+    messages.push({ role: "user", content: `${user_input}` });
 
     try {
       const completion = await openai.createChatCompletion({
