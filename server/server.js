@@ -21,10 +21,12 @@ app.get('/', async (req, res) => {
   })
 })
 
-let conversation = [{"role": "system", "content": "Hello there!"}]
+
 
 app.post('/', async (req, res) => {
   try {
+    let conversation = [{"role": "system", "content": "Hello there!"}]
+
     const prompt = req.body.prompt;
 
     conversation.append({"role": "user", "content": `${prompt}`})
