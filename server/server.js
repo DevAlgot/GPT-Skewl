@@ -31,7 +31,7 @@ app.post('/', async (req, res) => {
 
     const response = await openai.createChatCompletion({
       model: "gpt-3.5-turbo",
-      messages: [{ "role": "user", "content": `${prompt}` }],
+      messages: conversation //[{ "role": "user", "content": `${prompt}` }],
     });
 
     conversation.push = [{ "role": "assistant", "content": response.data.choices[0].message.content }]
