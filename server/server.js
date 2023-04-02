@@ -70,7 +70,7 @@ const history = [];
   const history = [];
 
   while (true) {
-    const user_input = readlineSync.question("Your input: ");
+    const user_input = req.body.prompt;
 
     const messages = [];
     for (const [input_text, completion_text] of history) {
