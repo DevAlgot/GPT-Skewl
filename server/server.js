@@ -22,38 +22,39 @@ app.get('/', async (req, res) => {
 })
 
 const history = [];
+while (true){
 
-app.post('/', async (req, res) => {
+  app.post('/', async (req, res) => {
 
-  const prompt = req.body.prompt;
+    const prompt = req.body.prompt;
 
-  const messages = [];
-  for (const [input_text, completion_text] of history) {
-    messages.push({ role: "user", content: input_text });
-    messages.push({ role: "assistant", content: completion_text });
-  }
+    const messages = [];
+    for (const [input_text, completion_text] of history) {
+      messages.push({ role: "user", content: input_text });
+      messages.push({ role: "assistant", content: completion_text });
+    }
 
-  messages.push({ role: "user", content: `${prompt}` });
+    messages.push({ role: "user", content: `${prompt}` });
 
-  try {
+    try {
 
-    const response = await openai.createChatCompletion({
-      model: "gpt-3.5-turbo",
-      messages: messages, //[{ "role": "user", "content": `${prompt}` }],
-    });
+      const response = await openai.createChatCompletion({
+        model: "gpt-3.5-turbo",
+        messages: messages, //[{ "role": "user", "content": `${prompt}` }],
+      });
 
-    messages.push = [{ "role": "assistant", "content": response.data.choices[0].message.content }]
+      messages.push = [{ "role": "assistant", "content": response.data.choices[0].message.content }]
 
-    res.status(200).send({
-      bot: response.data.choices[0].message.content
-    });
+      res.status(200).send({
+        bot: response.data.choices[0].message.content
+      });
 
-    history.push([prompt, response.data.choices[0].message.content])
+      history.push([prompt, response.data.choices[0].message.content])
 
-  } catch (error) {
-    console.error(error)
-    res.status(500).send(error && 'Something went wrong');
-  }
-})
-app.listen(5000, () => console.log('AI server started on http://localhost:5000'))
-
+    } catch (error) {
+      console.error(error)
+      res.status(500).send(error && 'Something went wrong');
+    }
+  })
+  app.listen(5000, () => console.log('AI server started on http://localhost:5000'))
+}
