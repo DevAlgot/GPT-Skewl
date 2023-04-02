@@ -33,7 +33,7 @@ app.post('/', async (req, res) => {
       messages: conversation     //[{"role": "user", "content": `${prompt}`}]
     });
 
-    conversation.append({"role": "assistant", "content": response.data.choices[0].messsage.content})
+    conversation.append({"role": "assistant", "content": response.data.choices[0].message.content})
 
     res.status(200).send({
       bot: response.data.choices[0].message.content
