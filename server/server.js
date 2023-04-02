@@ -63,7 +63,7 @@ const history = [];
 
 (async () => {
   const configuration = new Configuration({
-    apiKey: "process.env.OPEN_API_KEY",
+    apiKey: process.env.OPEN_API_KEY,
   });
   const openai = new OpenAIApi(configuration);
 
