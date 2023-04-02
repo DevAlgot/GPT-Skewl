@@ -112,7 +112,7 @@ textarea {
 }
 
 .ai .profile {
-  background: #dddddd;
+  background: transparent;
   width: 40px;
   height: 40px;
 }
