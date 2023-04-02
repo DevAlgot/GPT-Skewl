@@ -23,8 +23,6 @@ app.get('/', async (req, res) => {
 
 const history = [];
 
-
-
 app.post('/', async (req, res) => {
   try {
     const prompt = req.body.prompt;
