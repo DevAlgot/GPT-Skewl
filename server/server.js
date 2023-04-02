@@ -21,7 +21,7 @@ app.get('/', async (req, res) => {
   })
 })
 
-conversation = [{"role": "system", "content": "Hello there!"}]
+let conversation = [{"role": "system", "content": "Hello there!"}]
 
 app.post('/', async (req, res) => {
   try {
@@ -30,12 +30,10 @@ app.post('/', async (req, res) => {
     conversation.append({"role": "user", "content": `${prompt}`})
     const response = await openai.createChatCompletion({
       model: "gpt-3.5-turbo",
-      messages: [
-        {"role": "system", "content": "Hello there!"},
-      ]     //[{"role": "user", "content": `${prompt}`}]
+      messages:  conversation     //[{"role": "user", "content": `${prompt}`}]
     });
 
-    messages.append({"role": "assistant", "content": response.data.choices[0].message.content})
+    conversation.append({"role": "assistant", "content": response.data.choices[0].message.content})
 
     res.status(200).send({
       bot: response.data.choices[0].message.content
