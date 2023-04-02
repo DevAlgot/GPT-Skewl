@@ -24,24 +24,25 @@ app.get('/', async (req, res) => {
 const history = [];
 
 app.post('/', async (req, res) => {
+
+  const prompt = req.body.prompt;
+
+  const messages = [];
+  for (const [input_text, completion_text] of history) {
+    messages.push({ role: "user", content: input_text });
+    messages.push({ role: "assistant", content: completion_text });
+  }
+
+  messages.push({ role: "user", content: `${prompt}` });
+
   try {
-    const prompt = req.body.prompt;
-
-    const messages = [];
-    for (const [input_text, completion_text] of history) {
-      messages.push({ role: "user", content: input_text });
-      messages.push({ role: "assistant", content: completion_text });
-    }
-
-    messages.push({ role: "user", content: `${prompt}` });
-
 
     const response = await openai.createChatCompletion({
       model: "gpt-3.5-turbo",
       messages: messages, //[{ "role": "user", "content": `${prompt}` }],
     });
 
-    conversation.push = [{ "role": "assistant", "content": response.data.choices[0].message.content }]
+    messages.push = [{ "role": "assistant", "content": response.data.choices[0].message.content }]
 
     res.status(200).send({
       bot: response.data.choices[0].message.content
