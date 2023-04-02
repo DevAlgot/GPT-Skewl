@@ -28,7 +28,7 @@ body {
   /*background-color: rgb(26, 82, 138);*/
 }
 
-input {
+textarea {
   border-radius: 5px;
 }
 
@@ -163,7 +163,7 @@ form {
   gap: 10px;
 }
 
-input {
+textarea {
   width: 100%;
 
   color: #fff;

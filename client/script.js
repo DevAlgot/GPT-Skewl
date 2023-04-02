@@ -71,7 +71,7 @@ const handleSubmit = async (e) => {
     chatContainer.innerHTML += chatStripe(false, data.get('prompt'))
 
     // to clear the textarea input 
-    //form.reset()
+    form.reset()
 
     // bot's chatstripe
     const uniqueId = generateUniqueId()
