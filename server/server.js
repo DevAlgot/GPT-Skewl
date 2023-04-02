@@ -86,8 +86,11 @@ const history = [];
         messages: messages,
       });
 
-      const completion_text = completion.data.choices[0].message.content;
-      console.log(completion_text);
+      const completion_text = completion.choices[0].message.content;
+
+      res.status(200).send({
+        bot: completion_text
+      });
 
       history.push([user_input, completion_text]);
     } catch (error) {
