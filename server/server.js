@@ -59,6 +59,7 @@ app.get('/', async (req, res) => {
 //  app.listen(5000, () => console.log('AI server started on http://localhost:5000'))
 //}
 app.post('/', async (req, res) => {
+
   const configuration = new Configuration({
     apiKey: process.env.OPEN_API_KEY,
   });
@@ -90,6 +91,8 @@ app.post('/', async (req, res) => {
       });
 
       history.push([user_input, completion_text]);
+
+    
     } catch (error) {
       if (error.response) {
         console.log(error.response.status);
@@ -97,6 +100,9 @@ app.post('/', async (req, res) => {
       } else {
         console.log(error.message);
       }
+    }
+    if (error){
+      return;
     }
   }
 });
