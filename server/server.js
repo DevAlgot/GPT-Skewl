@@ -22,87 +22,75 @@ app.get('/', async (req, res) => {
 })
 
 
-//while (true){
+
+
+app.post('/', async (req, res) => {
+
+  const prompt = req.body.prompt;
+
+  try {
+
+    const response = await openai.createChatCompletion({
+      model: "gpt-3.5-turbo",
+      messages: [{ "role": "user", "content": `${prompt}` }],
+    });
+
+    res.status(200).send({
+      bot: response.data.choices[0].message.content
+    });
+
+  } catch (error) {
+    console.error(error)
+    res.status(500).send(error && 'Something went wrong');
+  }
+})
+app.listen(5000, () => console.log('AI server started on http://localhost:5000'))
+
+//app.post('/', async (req, res) => {
 //
-//  app.post('/', async (req, res) => {
+//  const configuration = new Configuration({
+//    apiKey: process.env.OPEN_API_KEY,
+//  });
+//  const openai = new OpenAIApi(configuration);
 //
-//    const prompt = req.body.prompt;
+//  const history = [];
+//
+//  while (true) {
+//    const user_input = req.body.prompt;
 //
 //    const messages = [];
 //    for (const [input_text, completion_text] of history) {
-//      messages.push({ role: "user", content: input_text });
-//      messages.push({ role: "assistant", content: completion_text });
+//      messages.push({ role: "user", content: `${input_text}` });
+//      messages.push({ role: "assistant", content: `${completion_text}` });
 //    }
 //
-//    messages.push({ role: "user", content: `${prompt}` });
+//    messages.push({ role: "user", content: `${user_input}` });
 //
 //    try {
-//
-//      const response = await openai.createChatCompletion({
+//      const completion = await openai.createChatCompletion({
 //        model: "gpt-3.5-turbo",
-//        messages: messages, //[{ "role": "user", "content": `${prompt}` }],
+//        messages: messages,
 //      });
 //
-//      messages.push = [{ "role": "assistant", "content": response.data.choices[0].message.content }]
+//      const completion_text = completion.choices[0].message.content;
 //
 //      res.status(200).send({
-//        bot: response.data.choices[0].message.content
+//        bot: completion_text
 //      });
 //
-//      history.push([prompt, response.data.choices[0].message.content])
+//      history.push([user_input, completion_text]);
+//
 //
 //    } catch (error) {
-//      console.error(error)
-//      res.status(500).send(error && 'Something went wrong');
+//      if (error.response) {
+//        console.log(error.response.status);
+//        console.log(error.response.data);
+//      } else {
+//        console.log(error.message);
+//      }
 //    }
-//  })
-//  app.listen(5000, () => console.log('AI server started on http://localhost:5000'))
-//}
-app.post('/', async (req, res) => {
-
-  const configuration = new Configuration({
-    apiKey: process.env.OPEN_API_KEY,
-  });
-  const openai = new OpenAIApi(configuration);
-
-  const history = [];
-
-  while (true) {
-    const user_input = req.body.prompt;
-
-    const messages = [];
-    for (const [input_text, completion_text] of history) {
-      messages.push({ role: "user", content: `${input_text}` });
-      messages.push({ role: "assistant", content: `${completion_text}` });
-    }
-
-    messages.push({ role: "user", content: `${user_input}` });
-
-    try {
-      const completion = await openai.createChatCompletion({
-        model: "gpt-3.5-turbo",
-        messages: messages,
-      });
-
-      const completion_text = completion.choices[0].message.content;
-
-      res.status(200).send({
-        bot: completion_text
-      });
-
-      history.push([user_input, completion_text]);
-
-    
-    } catch (error) {
-      if (error.response) {
-        console.log(error.response.status);
-        console.log(error.response.data);
-      } else {
-        console.log(error.message);
-      }
-    }
-    if (error){
-      return;
-    }
-  }
-});
+//    if (error){
+//      return
+//    }
+//  }
+//});
