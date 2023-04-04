@@ -21,9 +21,6 @@ app.get('/', async (req, res) => {
 })
 
 
-
-
-
 app.post('/', async (req, res) => {
 
   const prompt = req.body.prompt;
@@ -45,5 +42,4 @@ app.post('/', async (req, res) => {
   }
 })
 app.listen(5000, () => console.log('AI server started on http://localhost:5000'))
-
 
