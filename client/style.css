@@ -124,8 +124,7 @@ textarea {
   height: 60%;
   object-fit: contain;
   position: absolute;
-  top: 50px; /* Set the top position */
-  left: 50px; /* Set the left position */
+
 }
 
 .message {
