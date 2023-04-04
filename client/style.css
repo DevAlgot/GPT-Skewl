@@ -123,8 +123,6 @@ textarea {
   width: 60%;
   height: 60%;
   object-fit: contain;
-  position: absolute;
-
 }
 
 .message {
